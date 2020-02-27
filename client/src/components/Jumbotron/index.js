@@ -8,6 +8,7 @@ function Jumbotron({ children }) {
             <div className="container text-center">
                 {children}
             </div>
+            
         </div>
     );
 }
