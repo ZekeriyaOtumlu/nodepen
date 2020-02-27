@@ -1,0 +1,13 @@
+.jumbotron{
+    background-image: url("book1.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px; 
+    width: 100%;
+    padding-top: 10; 
+    text-align: center;
+    
+
+    
+}
