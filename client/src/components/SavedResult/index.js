@@ -7,7 +7,7 @@ const SavedResult = props => {
         <div className="card">
             <div className="card-body player">
                 <div className="article">
-                    <h3>Books that You Saved</h3>
+                    <h3>Vacation that You Saved</h3>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@ const SavedResult = props => {
         <div className="card">
             <div className="card-body player">
                 <div className="article">
-                    <h3>Books that You Saved</h3>
+                    <h3>Vacation that You Saved</h3>
                     {props.savedBooks.map(savedBooks => {
                         return (
                             <li className="saved-list list-group-item">
@@ -41,11 +41,11 @@ const SavedResult = props => {
                                 <br></br>
                                 <Row className="buttonDiv ">
                                     <button className="deleteBook btn btn-danger" id={savedBooks._id} onClick={() => props.handleDeleteButton(savedBooks._id)}>
-                                        Delete Book
+                                        Delete Vacation
                                     </button>
                                     <a href={savedBooks.link} target="_blank">
                                         <button className="viewBook btn btn-success">
-                                            View Book
+                                            View Vacation
                                         </button>
                                     </a>
                                 </Row>
