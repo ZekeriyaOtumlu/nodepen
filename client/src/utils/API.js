@@ -12,17 +12,17 @@ export default {
     },
 
     // Gets the book with the given id
-    getBook: function (id) {
+    getWeather: function (id) {
         return axios.get("/api/weather/" + id);
     },
 
     // Saves a book to the database
-    saveBook: function (savedBooks) {
-        return axios.post("/api/weather", savedBooks);
+    saveVacation: function (savedVacations) {
+        return axios.post("/api/weather", savedVacations);
     },
 
     // Deletes the book with the given id
-    deleteBook: function (id) {
+    deleteVacation: function (id) {
         return axios.delete("/api/weather/" + id);
     }
 
