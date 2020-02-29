@@ -20,7 +20,7 @@ if(process.env.NODE_ENV === "production"){
 app.use(routes)
 
 //Connect to mongoose
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/sports")
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/Vacations")
 
 
 app.listen(PORT, () => {

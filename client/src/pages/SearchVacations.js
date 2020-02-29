@@ -6,7 +6,7 @@ import SearchForm from "../components/SearchForm";
 import SearchResult from "../components/SearchResult"
 
 
-class SearchBooks extends Component {
+class searchVacations extends Component {
     //create state
     state = {
         search: "",
@@ -32,7 +32,6 @@ class SearchBooks extends Component {
         API.weatherSearch(this.state.search)
             .then(res => {
 
-                console.log(res)
                 if (res.data.items === "error") {
                     throw new Error(res.data.items);
                 }
@@ -112,4 +111,4 @@ class SearchBooks extends Component {
 
 }
 
-export default SearchBooks;
+export default searchVacations;
