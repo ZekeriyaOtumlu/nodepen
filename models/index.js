@@ -1,1 +1,1 @@
-module.exports ={Sport: require("./sport")};
+module.exports ={Vacation: require("./Vacation")};
