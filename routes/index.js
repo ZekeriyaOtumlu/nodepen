@@ -3,7 +3,7 @@ const apiRoutes = require("./api");
 const path = require("path");
 
 // api routes
-router.use("./api", apiRoutes);
+router.use("/api", apiRoutes);
 
 // IF could not find api routes, send the React app
 router.use(function(req, res){

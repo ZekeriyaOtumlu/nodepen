@@ -24,7 +24,7 @@ class searchVacations extends Component {
     }
 
     //function to control the submit button of the search form 
-    handleFormSubmit = event => {
+    handleFormSubmit = (event, query) => {
 
         console.log("run")
         event.preventDefault();
@@ -67,7 +67,7 @@ class searchVacations extends Component {
             })
             .catch(err => this.setState({ error: err.items }));
 
-            API.placeSearch(this.state.search).then(res => {
+            API.placeSearch(query).then(res => {
                 console.log(res)
             })
     }
