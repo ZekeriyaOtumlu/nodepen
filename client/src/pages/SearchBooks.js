@@ -77,10 +77,10 @@ class SearchBooks extends Component {
         // console.log(event)
         event.preventDefault();
         console.log(this.state.books)
-        let savedBooks = this.state.books.filter(book => book.id === event.target.id)
-        savedBooks = savedBooks[0];
-        API.saveBook(savedBooks)
-            .then(this.setState({ message: alert("Your book is saved") }))
+        let savedVacations = this.state.books.filter(book => book.id === event.target.id)
+        savedVacations = savedVacations[0];
+        API.saveVacation(savedVacations)
+            .then(this.setState({ message: alert("Your Vacation is saved") }))
             .catch(err => console.log(err))
     }
     render() {
@@ -89,7 +89,7 @@ class SearchBooks extends Component {
         <iframe id="forecast_embed" frameborder="0" height="245" width="100%" src={this.state.src}></iframe>
 
                 <Jumbotron>
-                    <h1 className="text-white">Select Your Favorite Books </h1>
+                    <h1 className="text-white">Select Your Favorite Vacation </h1>
                 </Jumbotron>
                 <Container>
                     <Row>
