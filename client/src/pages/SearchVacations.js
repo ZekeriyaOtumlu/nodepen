@@ -32,7 +32,6 @@ class searchVacations extends Component {
         API.weatherSearch(this.state.search)
             .then(res => {
 
-                console.log(res)
                 if (res.data.items === "error") {
                     throw new Error(res.data.items);
                 }

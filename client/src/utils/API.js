@@ -13,14 +13,6 @@ export default {
      },
 
 
-
-    //  placeSearch: function(query) {
-    //     return axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + query + "+point+of+interest&language=en&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY")
-    //  },
-
-
-
-
     // Gets all books
     // getWeather: function () {
     //     return axios.get("/api/weather");
