@@ -2,13 +2,13 @@ const mongoose = require("mongoose");
 
 const db = require("../models");
 
-// This file empties the Sports collection and inserts the sports below
+// This file empties the Vacations collection and inserts the Vacations below
 mongoose.connect(
     process.env.MONGODB_URI || 
-    "mongodb://localhost/sports"
+    "mongodb://localhost/Vacations"
 );
 
-const bestSport = [{
+const bestVacation = [{
   authors: ["Suzanne Collins"],
   description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
   image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
@@ -16,9 +16,9 @@ const bestSport = [{
   title: "The Hunger Games"
 }]
 
-db.Sport
+db.Vacation
    .remove({})
-   .then(() => db.Sport.collection.insertMany(bestSport))
+   .then(() => db.Vacation.collection.insertMany(bestVacation))
    .then(data => {
        console.log(data.result.n + "inserted your records");
        process.exit(0);

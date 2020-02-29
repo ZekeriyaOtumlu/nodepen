@@ -6,7 +6,7 @@ import SearchForm from "../components/SearchForm";
 import SearchResult from "../components/SearchResult"
 
 
-class SearchBooks extends Component {
+class searchVacations extends Component {
     //create state
     state = {
         search: "",
@@ -24,7 +24,7 @@ class SearchBooks extends Component {
     }
 
     //function to control the submit button of the search form 
-    handleFormSubmit = event => {
+    handleFormSubmit = (event, query) => {
 
         console.log("run")
         event.preventDefault();
@@ -68,7 +68,7 @@ class SearchBooks extends Component {
             })
             .catch(err => this.setState({ error: err.items }));
 
-            API.placeSearch(this.state.search).then(res => {
+            API.placeSearch(query).then(res => {
                 console.log(res)
             })
     }
@@ -112,4 +112,4 @@ class SearchBooks extends Component {
 
 }
 
-export default SearchBooks;
+export default searchVacations;
