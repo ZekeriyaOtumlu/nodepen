@@ -1,12 +1,16 @@
 const router = require("express").Router();
-const VacationsController = require ("../../controllers/VacationContoller");
+const VacationsController = require ("../../controllers/VacationController");
+
+
+router.route("/placeSearch/:query")
+.get(VacationsController.placeSearch)
 
 // Matches "/api/Vacations"
 router.route("/")
 .get(VacationsController.findAll)
 .post(VacationsController.create);
 
-// Matches with "/api/Vacations: id"
+
 
 router.route("/:id")
 .get(VacationsController.findById)
