@@ -2,12 +2,16 @@ import React from "react";
 import "./style.css";
 
 
-function Jumbotron({ children }) {
+
+
+function Jumbotron() {
     return (
         <div className="jumbotron jumbotron-fluid d-flex align-items-center">
             <div className="container text-center">
-                {children}
+             <h1>Search for Destinations</h1>
             </div>
+     
+
             
         </div>
     );

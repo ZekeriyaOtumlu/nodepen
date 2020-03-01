@@ -19,22 +19,22 @@ const SavedResult = props => {
                     {props.savedVacations.map(savedVacations => {
                         return (
                             <li className="saved-list list-group-item">
-                                <Row className="SearchResult" id={savedVacations.title + "Card"} key={savedVacations._id}>
-                                    {/* col-3 show image of the book */}
+                                <Row className="SearchResult" id={savedVacations.name + "Card"} key={savedVacations._id}>
+                                    {/* col-3 show image of the vacation */}
                                     <Col size="2" className="bookImage">
-                                        <img src={savedVacations.image} alt={savedVacations.title} />
+                                        <img src={savedVacations.image} alt={savedVacations.name} />
                                     </Col>
                                     <Col size="1" className="emptyCol"/>
-                                    {/* col-9 show information of the book */}
+                                    {/* col-9 show information of the vacation */}
                                     <Col size="9" className="bookInfo">
                                         <Row>
-                                            <h2 className="bookTitle">{savedVacations.title}</h2>
+                                            <h2 className="bookTitle">{savedVacations.name}</h2>
                                         </Row>
                                         <Row>
-                                            <h3 className="bookAuthor">{savedVacations.authors}</h3>
+                                            <h3 className="bookAuthor">{savedVacations.image}</h3>
                                         </Row>
                                         <Row>
-                                            <p className="bookDescription">{savedVacations.description}</p>
+                                            <p className="bookDescription">{savedVacations.weather}</p>
                                         </Row>
                                     </Col>
                                 </Row>

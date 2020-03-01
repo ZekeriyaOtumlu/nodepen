@@ -9,14 +9,14 @@ class SaveVacation extends Component {
         savedVacations: []
     };
 
-    //when this component mounts, grab all books that were save to the database 
+    //when this component mounts, grab all vacations that were save to the database 
     componentDidMount() {
         API.getWeather()
             .then(res => this.setState({ savedVacations: res.data }))
             .catch(err => console.log(err))
     }
 
-    //function to remove book by id
+    //function to remove vacation by id
     handleDeleteButton = id => {
         API.deleteVacation(id)
             .then(res => this.componentDidMount())
