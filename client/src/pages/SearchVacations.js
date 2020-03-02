@@ -76,9 +76,7 @@ class searchVacations extends Component {
             });
 
 
-            API.photoSearch(query).then(res => {
-                console.log(res)
-            });
+       
 
     }
 
