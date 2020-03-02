@@ -12,9 +12,12 @@ export default {
       return axios.get("/api/Vacation/placeSearch/" + query)
      },
 
+
+
      photoSearch: function(query) {
         return axios.get("/api/Vacation/photoSearch/")
        },
+
 
 
     // Gets all vacations
