@@ -74,9 +74,6 @@ class searchVacations extends Component {
             API.placeSearch(this.state.search).then(res => {
                 console.log(res)
             });
-            API.photoSearch(query).then(res => {
-                console.log(res)
-            });
     }
 
     handleSavedButton = event => {
