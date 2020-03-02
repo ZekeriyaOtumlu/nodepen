@@ -3,7 +3,7 @@ import "./style.css";
 import {Row, Col} from "../Grid"
 
 const SearchResult = props => {
-    return (props.books.length === 0) ? (
+    return (props.vacations.length === 0) ? (
         <div className="card">
             <div className="card-body player">
                 <div className="article">
@@ -16,34 +16,34 @@ const SearchResult = props => {
                 <div className="card-body player">
                     <div className="article">
                         <h3>Search Results</h3>
-                        {props.books.map(book => {
+                        {props.vacations.map(vacation => {
                             return (
                                 <li className="search-list list-group-item">
-                                    <Row className="SearchResult row" id={book.title + "Card"} key={book._id}>
-                                        {/* col-3 show image of the book */}
+                                    <Row className="SearchResult row" id={vacation.name + "Card"} key={vacation._id}>
+                                        {/* col-3 show image of the vacation */}
                                         <Col size="2" className="bookImage">
-                                            <img src={book.image} alt={book.title} />
+                                            <img src={vacation.image} alt={vacation.name} />
                                         </Col>
                                         <Col size="1" className="emptyCol"/>
-                                        {/* col-9 show information of the book */}
+                                        {/* col-9 show information of the vacation */}
                                         <Col size="9" className="bookInfo">
                                             <Row>
-                                                <h3 className="bookTitle">{book.title}</h3>
+                                                <h3 className="bookTitle">{vacation.name}</h3>
                                             </Row>
                                             <Row>
-                                                <h4 className="bookAuthor">{book.author}</h4>
+                                                <h4 className="bookAuthor">{vacation.image}</h4>
                                             </Row>
                                             <Row>
-                                                <p className="bookDescription">{book.description}</p>
+                                                <p className="bookDescription">{vacation.weather}</p>
                                             </Row>
                                         </Col>
                                     </Row>
                                     <br></br>
                                     <Row className="buttonDiv ">
-                                        <button className="saveVacation btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                                        <button className="saveVacation btn btn-primary" id={vacation.id} onClick={(event) => props.handleSavedButton(event)}>
                                             Save Vacation
                                         </button>
-                                        <a href={book.link} target="_blank" rel="noopener noreferrer">
+                                        <a href={vacation.link} target="_blank" rel="noopener noreferrer">
                                             <button className="viewBook btn btn-success">
                                                 View Vacation
                                         </button>

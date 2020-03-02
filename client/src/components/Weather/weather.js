@@ -44,8 +44,8 @@ module.exports = React.createClass({
 			key={this.state.lat}
 			type="text/html"
 			frameBorder="0"
-			height="245"
-			width="90%"
+			height="210"
+			// width="90%"
 			src={"http://forecast.io/embed/#lat=" + this.state.lat + "&lon=" + this.state.lng + "&name=event"}>
 		</iframe>
             </div>

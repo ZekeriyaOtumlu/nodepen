@@ -1,6 +1,7 @@
 form{
-    background: lightblue;
-    border-radius: 15px;
+    /* background: lightblue; */
+    /* border-radius: 15px; */
+    background-color: aquamarine;
 }
 .VacationSearchLabel{
     margin-left:20px;
