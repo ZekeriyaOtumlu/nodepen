@@ -69,15 +69,17 @@ module.exports = {
    axios.get(`${placeBaseURL}${req.params.search}${placeEndURL}${APIKEY}`)
     .then(response => {
 
-  for (let i = 0; i < response.data.results.length; i++) {
+      res.json(response.data.results)
 
-    vacationContent[i] = {
-    name: (response.data.results[i].name),
-    address: (response.data.results[i].formatted_address),
-    image: (photoBaseURL + response.data.results[i].photos[0].photo_reference + APIKEY)
-  };
+  // for (let i = 0; i < response.data.results.length; i++) {
 
-  }
+  //   vacationContent[i] = {
+  //   name: (response.data.results[i].name),
+  //   address: (response.data.results[i].formatted_address),
+  //   image: (photoBaseURL + response.data.results[i].photos[0].photo_reference + APIKEY)
+  //   }
+
+  // }
 
 console.log(vacationContent)
 
