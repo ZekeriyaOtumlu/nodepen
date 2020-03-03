@@ -4,15 +4,8 @@ const placeBaseURL = "https://maps.googleapis.com/maps/api/place/textsearch/json
 const placeEndURL = "+point+of+interest&language=en";
 const APIKEY = "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY";
 let photoREF = "";
-
 const photoBaseURL = 'https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=';
 let vacationContent = [];
-
-
-
-const photoBaseURL = "https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=";
-
-
 
 
 // PHOTO URL
@@ -74,18 +67,19 @@ module.exports = {
   placeSearch: function(req, res) {
     console.log("search")
    axios.get(`${placeBaseURL}${req.params.search}${placeEndURL}${APIKEY}`)
-
     .then(response => {
 
-  for (let i = 0; i < response.data.results.length; i++) {
+      res.json(response.data.results)
 
-    vacationContent[i] = {
-    name: (response.data.results[i].name),
-    address: (response.data.results[i].formatted_address),
-    image: (photoBaseURL + response.data.results[i].photos[0].photo_reference + APIKEY)
-  };
+  // for (let i = 0; i < response.data.results.length; i++) {
 
-  }
+  //   vacationContent[i] = {
+  //   name: (response.data.results[i].name),
+  //   address: (response.data.results[i].formatted_address),
+  //   image: (photoBaseURL + response.data.results[i].photos[0].photo_reference + APIKEY)
+  //   }
+
+  // }
 
 console.log(vacationContent)
 
@@ -93,24 +87,4 @@ console.log(vacationContent)
       console.log(err)
     })
   },
-
-    .then(response => {
-  console.log(response.data.results.map(res => (res.name + res.formatted_address + res.photos[0].photo_reference)))
-//  console.log(res.json(response.data.results[0]))
-  photoREF = response.data.results[0].photos[0].photo_reference
- console.log(photoBaseURL + photoREF + APIKEY)
-      }).catch(err => {
-      console.log(err)
-    })
-  },
-  photoSearch: function(req, res) {
-    console.log("req")
-   axios.get(`${photoBaseURL}${photoREF}${placeEndURL}${APIKEY}`)
-    .then(response => {
-  console.log(response.data.results.map(res => (res.name + res.formatted_address + res.photos[0].photo_reference)))
-    }).catch(err => {
-      console.log(err)
-    })
-  }
-
   };

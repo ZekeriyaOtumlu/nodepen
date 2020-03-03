@@ -4,7 +4,12 @@ import Jumbotron from "../components/Jumbotron";
 import { Container, Row, Col } from "../components/Grid";
 import SearchForm from "../components/SearchForm";
 import SearchResult from "../components/SearchResult"
-import './styles.css'
+import './styles.css';
+const APIKEY = "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY";
+let photoREF = "";
+const photoBaseURL = 'https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=';
+
+
 
 class searchVacations extends Component {
     //create state
@@ -32,7 +37,7 @@ class searchVacations extends Component {
         console.log("run")
         event.preventDefault();
         // once it clicks it connects to the google vacation api with the search value
-        API.weatherSearch(this.state.search)
+        API.VacationSearch(this.state.search)
             .then(res => {
 
                 if (res.data.items === "error") {
@@ -73,12 +78,24 @@ class searchVacations extends Component {
 
             API.placeSearch(this.state.search).then(res => {
                 console.log(res)
+
+             let vacationContent = [];
+                
+  for (let i = 0; i < res.data.length && i < 5;  i++) {
+
+    vacationContent[i] = {
+    name: (res.data[i].name),
+    address: (res.data[i].formatted_address),
+    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
+    }
+
+  }
+  console.log(vacationContent)
+
             });
 
 
-            API.photoSearch(query).then(res => {
-                console.log(res)
-            });
+       
 
     }
 
@@ -126,6 +143,8 @@ class searchVacations extends Component {
 
                 <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
 <hr></hr>
+
+         
             </Container>
         )
     }
