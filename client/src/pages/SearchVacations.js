@@ -5,7 +5,9 @@ import { Container, Row, Col } from "../components/Grid";
 import SearchForm from "../components/SearchForm";
 import SearchResult from "../components/SearchResult"
 import './styles.css';
-
+const APIKEY = "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY";
+let photoREF = "";
+const photoBaseURL = 'https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=';
 
 
 
@@ -76,6 +78,20 @@ class searchVacations extends Component {
 
             API.placeSearch(this.state.search).then(res => {
                 console.log(res)
+
+             let vacationContent = [];
+                
+  for (let i = 0; i < res.data.length && i < 5;  i++) {
+
+    vacationContent[i] = {
+    name: (res.data[i].name),
+    address: (res.data[i].formatted_address),
+    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
+    }
+
+  }
+  console.log(vacationContent)
+
             });
 
 
