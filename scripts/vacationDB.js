@@ -9,11 +9,10 @@ mongoose.connect(
 );
 
 const bestVacation = [{
-  authors: ["Suzanne Collins"],
-  description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature.",
-  image: "http://vacations.google.com/vacations/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
-  link: "http://vacations.google.com/vacations?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api",
-  title: "The Hunger Games"
+
+    name: ["New York NY"],
+    image: "https://cdn.vox-cdn.com/thumbor/YQVObtsv5vFSxMWPZOxyzPnT3ZE=/0x0:2000x1333/1200x900/filters:focal(840x507:1160x827)/cdn.vox-cdn.com/uploads/chorus_image/image/58405263/171109_08_17_25_5DSR4719.0.jpg",
+    weather: "Sunny"
 }]
 
 db.Vacation
