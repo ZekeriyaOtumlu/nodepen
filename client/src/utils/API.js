@@ -3,38 +3,33 @@ import axios from "axios"
 export default {
 
 
-    // Get book from google search 
-    weatherSearch: function(query , props) {
+    // Get vacation from google search 
+    VacationSearch: function(query) {
         return axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + query + "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY")
        },
 
     placeSearch: function(query) {
-        return axios.get("https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=" + query + "+point+of+interest&language=en&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY")
+      return axios.get("/api/Vacation/placeSearch/" + query)
      },
 
+    // Gets all vacations
+    // getWeather: function () {
+    //     return axios.get("/api/weather");
+    // },
 
-    
-
-
-
-    // Gets all books
-    getWeather: function () {
-        return axios.get("/api/weather");
+    // Gets the vacation with the given id
+    getWeather: function (id) {
+        return axios.get("/api/Vacation/" + id);
     },
 
-    // Gets the book with the given id
-    getBook: function (id) {
-        return axios.get("/api/weather/" + id);
+    // Saves a vacation to the database
+    saveVacation: function (savedVacations) {
+        return axios.post("/api/Vacation", savedVacations);
     },
 
-    // Saves a book to the database
-    saveBook: function (savedBooks) {
-        return axios.post("/api/weather", savedBooks);
-    },
-
-    // Deletes the book with the given id
-    deleteBook: function (id) {
-        return axios.delete("/api/weather/" + id);
+    // Deletes the vacation with the given id
+    deleteVacation: function (id) {
+        return axios.delete("/api/Vacation/" + id);
     }
 
 }

@@ -4,21 +4,21 @@ import Jumbotron from "../components/Jumbotron";
 import { Container} from "../components/Grid";
 import SavedResult from "../components/SavedResult"
 
-class SaveBook extends Component {
+class SaveVacation extends Component {
     state = {
-        savedBooks: []
+        savedVacations: []
     };
 
-    //when this component mounts, grab all books that were save to the database 
+    //when this component mounts, grab all vacations that were save to the database 
     componentDidMount() {
         API.getWeather()
-            .then(res => this.setState({ savedBooks: res.data }))
+            .then(res => this.setState({ savedVacations: res.data }))
             .catch(err => console.log(err))
     }
 
-    //function to remove book by id
+    //function to remove vacation by id
     handleDeleteButton = id => {
-        API.deleteBook(id)
+        API.deleteVacation(id)
             .then(res => this.componentDidMount())
             .catch(err => console.log(err))
     }
@@ -28,7 +28,7 @@ class SaveBook extends Component {
             <Container fluid className="container">
                 <Jumbotron />
                 <Container>
-                    <SavedResult savedBooks={this.state.savedBooks} handleDeleteButton={this.handleDeleteButton} />
+                    <SavedResult savedVacations={this.state.savedVacations} handleDeleteButton={this.handleDeleteButton} />
                 </Container>
             </Container>
         )
@@ -37,4 +37,4 @@ class SaveBook extends Component {
 
 
 
-export default SaveBook;
+export default SaveVacation;

@@ -1,8 +1,9 @@
 form{
-    background: lightblue;
-    border-radius: 15px;
+    /* background: lightblue; */
+    /* border-radius: 15px; */
+    background-color: aquamarine;
 }
-.BookSearchLabel{
+.VacationSearchLabel{
     margin-left:20px;
     margin-top: 10px
 }
