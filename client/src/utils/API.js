@@ -4,7 +4,7 @@ export default {
 
 
     // Get vacation from google search 
-    weatherSearch: function(query) {
+    VacationSearch: function(query) {
         return axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + query + "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY")
        },
 
@@ -19,17 +19,17 @@ export default {
 
     // Gets the vacation with the given id
     getWeather: function (id) {
-        return axios.get("/api/weather/" + id);
+        return axios.get("/api/Vacation/" + id);
     },
 
     // Saves a vacation to the database
     saveVacation: function (savedVacations) {
-        return axios.post("/api/weather", savedVacations);
+        return axios.post("/api/Vacation", savedVacations);
     },
 
     // Deletes the vacation with the given id
     deleteVacation: function (id) {
-        return axios.delete("/api/weather/" + id);
+        return axios.delete("/api/Vacation/" + id);
     }
 
 }

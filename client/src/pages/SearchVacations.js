@@ -4,7 +4,10 @@ import Jumbotron from "../components/Jumbotron";
 import { Container, Row, Col } from "../components/Grid";
 import SearchForm from "../components/SearchForm";
 import SearchResult from "../components/SearchResult"
-import './styles.css'
+import './styles.css';
+
+
+
 
 class searchVacations extends Component {
     //create state
@@ -32,7 +35,7 @@ class searchVacations extends Component {
         console.log("run")
         event.preventDefault();
         // once it clicks it connects to the google vacation api with the search value
-        API.weatherSearch(this.state.search)
+        API.VacationSearch(this.state.search)
             .then(res => {
 
                 if (res.data.items === "error") {
@@ -124,6 +127,8 @@ class searchVacations extends Component {
 
                 <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
 <hr></hr>
+
+         
             </Container>
         )
     }
