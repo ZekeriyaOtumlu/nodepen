@@ -18,7 +18,7 @@ export default {
     // },
 
     // Gets the vacation with the given id
-    getWeather: function (id) {
+    getVacation: function (id) {
         return axios.get("/api/Vacation/" + id);
     },
 
