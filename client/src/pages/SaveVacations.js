@@ -11,8 +11,8 @@ class SaveVacation extends Component {
 
     //when this component mounts, grab all vacations that were save to the database 
     componentDidMount() {
-        API.getWeather()
-            .then(res => this.setState({ savedVacations: res.data }))
+        API.getVacation()
+            .then(res => this.setState({ savedVacations: res.data}))
             .catch(err => console.log(err))
     }
 
