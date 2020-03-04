@@ -3,9 +3,9 @@ const axios = require("axios");
 const placeBaseURL = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=";
 const placeEndURL = "+point+of+interest&language=en";
 const APIKEY = "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY";
-let photoREF = "";
-const photoBaseURL = 'https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=';
-let vacationContent = [];
+// let photoREF = "";
+// const photoBaseURL = 'https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=';
+// let vacationContent = [];
 
 
 // PHOTO URL
