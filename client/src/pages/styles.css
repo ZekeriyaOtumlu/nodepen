@@ -11,3 +11,13 @@ border: black;
 .fullResults {
 margin-left: 5px;
 }
+.center {
+    display: flex;
+vertical-align: -webkit-baseline-middle
+
+}
+/* #forecast_embed {
+
+vertical-align: middle;
+
+} */
