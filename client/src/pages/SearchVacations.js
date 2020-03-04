@@ -20,11 +20,13 @@ class searchVacations extends Component {
         vacations: [],
         vacationContent: [],
         error: "",
-        message: "",
+        // message: "",
         lat: "25.7616798",
         lng:  "-80.1917902",
         src: '',
-        name: ''
+        name: '',
+        id: " ",
+        image: " "
 
     };
     
@@ -108,13 +110,13 @@ class searchVacations extends Component {
     }
 
     handleSavedButton = event => {
-        // console.log(event)
+        console.log(event)
         event.preventDefault();
         console.log(this.state.vacations)
-        let savedVacations = this.state.vacations.filter(vacation => vacation.id === event.target.id)
+        let savedVacations = this.state.vacations.filter(vacation => vacation.id === event.res.id)
         savedVacations = savedVacations[0];
         API.saveVacation(savedVacations)
-            .then(this.setState({ message: alert("Your Vacation is saved") }))
+            .then(this.setState(alert("Your Vacation is saved") ))
             .catch(err => console.log(err))
     }
     render() {
@@ -165,13 +167,17 @@ class searchVacations extends Component {
                             <div className="center">
                             <img id="placeImg" src={res.image}></img>
                             <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
-                            <button className="saveVacation btn btn-primary" id={res.id}
+                            {/* <button className="saveVacation btn btn-primary" id={res.id}
                             //  onClick={(event) => props.handleSavedButton(event)}
                              >
 
                                 Save
 
+                            </button> */}
+                            <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(event)}>
+                                Save
                             </button>
+                            
                             </div>
                             <div className="address">
                             {res.address}
