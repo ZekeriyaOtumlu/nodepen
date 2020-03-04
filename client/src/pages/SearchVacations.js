@@ -168,7 +168,9 @@ class searchVacations extends Component {
                             <button className="saveVacation btn btn-primary" id={res.id}
                             //  onClick={(event) => props.handleSavedButton(event)}
                              >
+
                                 Save
+
                             </button>
                             </div>
                             <div className="address">
