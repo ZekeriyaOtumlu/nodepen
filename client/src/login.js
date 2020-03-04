@@ -9,18 +9,7 @@ export class SignIn extends Component {
       password: '',
       message: '',
    }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+
    componentDidMount = () => this.authListener();
    closeModalHandler = () => this.props.history.push('/');
    createAccountRedirect = () => this.props.history.push("/SignUp");
@@ -228,6 +217,3 @@ export class SignUp extends Component {
       )
    }
 }
-
-
-

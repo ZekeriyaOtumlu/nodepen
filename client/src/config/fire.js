@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-
 const firebaseConfig = {
   apiKey: "AIzaSyDkjznjPuvMbx1Yp1VfIhKUfKk9cS_DpbY",
   authDomain: "weatherapp-a646d.firebaseapp.com",
@@ -14,7 +13,9 @@ const firebaseConfig = {
   const fire = firebase.initializeApp(firebaseConfig);
   
 
+
   const facebookProvider = new firebase.auth.FacebookAuthProvider();
   const googleProvider = new firebase.auth.GoogleAuthProvider();
 
   export {fire, googleProvider, facebookProvider}
+
