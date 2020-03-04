@@ -36,4 +36,9 @@ img {
 }
 listWeather{
     float: right !important;
+
+}
+.fullResults {
+    margin-left: 0px !important;
+
 }
