@@ -81,7 +81,7 @@ module.exports = {
 
   // }
 
-console.log(vacationContent)
+// console.log(vacationContent)
 
       }).catch(err => {
       console.log(err)

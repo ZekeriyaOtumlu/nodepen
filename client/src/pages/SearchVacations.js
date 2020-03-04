@@ -5,6 +5,8 @@ import { Container, Row, Col } from "../components/Grid";
 import SearchForm from "../components/SearchForm";
 import SearchResult from "../components/SearchResult"
 import './styles.css';
+import { List, ListItem } from "../components/List"
+import Places from "../components/Places/places"
 const APIKEY = "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY";
 let photoREF = "";
 const photoBaseURL = 'https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=';
@@ -16,6 +18,7 @@ class searchVacations extends Component {
     state = {
         search: "",
         vacations: [],
+        vacationContent: [],
         error: "",
         message: "",
         lat: "25.7616798",
@@ -77,20 +80,25 @@ class searchVacations extends Component {
             .catch(err => this.setState({ error: err.items }));
 
             API.placeSearch(this.state.search).then(res => {
-                console.log(res)
+                // console.log(res)
 
              let vacationContent = [];
                 
   for (let i = 0; i < res.data.length && i < 5;  i++) {
 
     vacationContent[i] = {
+    id: (res.data[i].id),
     name: (res.data[i].name),
     address: (res.data[i].formatted_address),
     image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
     }
+   }
 
-  }
-  console.log(vacationContent)
+   console.log("map this content")
+    console.log(vacationContent)
+    this.setState({vacationContent:vacationContent})
+    console.log(this.state.vacationContent)
+
 
             });
 
@@ -138,13 +146,45 @@ class searchVacations extends Component {
                 <Container>
                     <SearchResult vacations={this.state.vacations} handleSavedButton={this.handleSavedButton} />
                 </Container>
-                <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=CmRaAAAAH4yEUBc1g673ywAK10QI-bujxZ4UWdXEFydmpKDZfC6NCSHN_nBGyFv9Do3VuVA0mPCwwHG13ow4m0zLLsIgEc90Pbe_Q7C1reEmhgFEn0gOEYewaxxwseWcM-lmvGZJEhDfKk5uTvdTsrgphZgTznFvGhQPIeGa3eQ-9PTsSzQxC4Osvsx5Nw&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY" alt=""></img>
+                {/* <img src="https://maps.googleapis.com/maps/api/place/photo?maxheight=210&photoreference=CmRaAAAAH4yEUBc1g673ywAK10QI-bujxZ4UWdXEFydmpKDZfC6NCSHN_nBGyFv9Do3VuVA0mPCwwHG13ow4m0zLLsIgEc90Pbe_Q7C1reEmhgFEn0gOEYewaxxwseWcM-lmvGZJEhDfKk5uTvdTsrgphZgTznFvGhQPIeGa3eQ-9PTsSzQxC4Osvsx5Nw&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY" alt=""></img> */}
+
+                {/* <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe> */}
 
 
-                <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
-<hr></hr>
+                <List>
+                {this.state.vacationContent.map(res => {
+                  return (
+                    <ListItem key={res.id}>
+                        <div className="fullResults">
 
-         
+                            <div className="name">
+                             <h3>
+                                 {res.name}
+                             </h3>
+                            </div>
+                            <div className="center">
+                            <img id="placeImg" src={res.image}></img>
+                            <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
+                            <button className="saveVacation btn btn-primary" id={res.id}
+                            //  onClick={(event) => props.handleSavedButton(event)}
+                             >
+                                Save Vacation
+                            </button>
+                            </div>
+                            <div className="address">
+                            {res.address}
+                            </div>
+                            <hr></hr>
+                        </div>
+                     
+                    </ListItem>
+                  );
+                })}
+              </List>
+
+
+
+
             </Container>
         )
     }
