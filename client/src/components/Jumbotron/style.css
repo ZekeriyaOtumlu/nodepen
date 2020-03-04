@@ -1,14 +1,32 @@
 .jumbotron{
-    /* background-image: url("weather.jpg"); */
+    background-image: url("./Banner.jpg");
     background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-color: aquamarine;
-    height: 100px; 
-    width: 100%;
-    /* padding-top: 10;  */
+    /* background-image: ; */
+    background-color: #7cc1de;
+    /* background-size: 100%; */
+    height: 318px;
     text-align: center;
-    
 
 }
+#title {
+margin-top: 0px;
+font-family: 'Times New Roman', Times, serif;
+}
 
+form{
+    /* background: lightblue; */
+    border-radius: 35px;
+    /* background-color: aquamarine; */
+    margin-top: 190px;
+}
+
+.submitBtn{
+    margin-top: 5px;
+    color: blue;
+    /* margin-left: 20px; */
+}
+.form-control{
+    /* margin-left: 20px; */
+    width: 250px;
+    height: 20px;
+}
