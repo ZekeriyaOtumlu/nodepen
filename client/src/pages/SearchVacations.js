@@ -5,6 +5,7 @@ import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import { Container, Row, Col } from "../components/Grid";
+
 import SearchResult from "../components/SearchResult"
 import './styles.css';
 import { List, ListItem } from "../components/List"
@@ -29,9 +30,11 @@ class searchVacations extends Component {
         id: " ",
         image: " ",
         pagename: "saved Landmarks",
+
         link: "/saved",
         logout: "Log Off",
         logofffun: "fire.auth().signOut()"
+
 
     };
 
@@ -55,6 +58,17 @@ class searchVacations extends Component {
                 }
                 else {
 
+
+                    console.log(res.data.results)
+                    this.setState({ lat: res.data.results[0].geometry.location.lat })
+                    console.log(this.state.lat)
+                    this.setState({ lng: res.data.results[0].geometry.location.lng })
+                    console.log(this.state.lng)
+                    this.setState({ name: res.data.results[0].formatted_address })
+
+                    this.setState({ src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us` })
+                    console.log(this.state.src)
+
                     // console.log(res.data.results)
                     this.setState({ lat: res.data.results[0].geometry.location.lat })
                     // console.log(this.state.lat)
@@ -64,6 +78,7 @@ class searchVacations extends Component {
 
                     this.setState({ src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us` })
                     // console.log(this.state.src)
+
                     // store response in a array
                     // let results = res.data.items
                     // //map through the array 
@@ -91,6 +106,19 @@ class searchVacations extends Component {
 
             let vacationContent = [];
 
+
+            for (let i = 0; i < res.data.length && i < 5; i++) {
+
+                vacationContent[i] = {
+                    name: (res.data[i].name),
+                    address: (res.data[i].formatted_address),
+                    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
+                }
+
+            }
+            console.log(vacationContent)
+
+
             for (let i = 0; i < res.data.length && i < 7; i++) {
 
                 vacationContent[i] = {
@@ -104,6 +132,7 @@ class searchVacations extends Component {
             console.log(this.state.vacationContent)
 
 
+
         });
 
 
@@ -111,7 +140,9 @@ class searchVacations extends Component {
 
     }
 
+
     handleSavedButton = ({ id, name, address, image }, src) => {
+
 
         console.log(id)
         console.log(name)
@@ -143,10 +174,12 @@ class searchVacations extends Component {
     render() {
         return (
             <Container fluid>
+
                 <Nav title={this.state.pagename} link={this.state.link}> </Nav>
 
 
                 {/* <Jumbotron /> */}
+
                 <Jumbotron
 
                     handleFormSubmit={this.handleFormSubmit}
@@ -163,7 +196,9 @@ class searchVacations extends Component {
 
 
 
+
                 {/* 
+
                 <SearchForm
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
@@ -181,6 +216,15 @@ class searchVacations extends Component {
                     <SearchResult vacations={this.state.vacations} handleSavedButton={this.handleSavedButton} />
                 </Container>
 
+
+                <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
+                <hr></hr>
+
+                {/* <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                                            Save Book
+                                        </button> */}
+
+
                 <List>
                     {this.state.vacationContent.map(res => {
                         return (
@@ -195,6 +239,7 @@ class searchVacations extends Component {
                                     <div className="center">
                                         <img id="placeImg" src={res.image}></img>
                                         <iframe id="forecast_embed" title={res.name} frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
+
 
                                         {/* <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(res, this.state.src)}>
                                             Save
@@ -220,6 +265,7 @@ class searchVacations extends Component {
 
 
 
+
                                     </div>
                                     <div className="address">
                                         {res.address}
@@ -231,6 +277,7 @@ class searchVacations extends Component {
                         );
                     })}
                 </List>
+
 
             </Container>
         )

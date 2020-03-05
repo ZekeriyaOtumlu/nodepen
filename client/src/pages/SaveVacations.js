@@ -42,7 +42,9 @@ class SaveVacation extends Component {
     render() {
         return (
             <Container fluid className="container">
+
                 <Nav title={this.state.pagename} link={this.state.link}> </Nav>
+
                 <Jumbotron />
                 <Container>
                     <SavedResult handleInputChange={this.handleInputChange} savedVacations={this.state.savedVacations} handleDeleteButton={this.handleDeleteButton} />

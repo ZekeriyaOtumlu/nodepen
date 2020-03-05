@@ -4,6 +4,7 @@ import "./Form.css"
 export default function Form(props) {
     return (
         <form>
+
             <div className="form-group">
                 <label className="VacationSearchLabel"></label>
                 <br></br>
@@ -19,5 +20,6 @@ export default function Form(props) {
                 Submit
         </button>
         </form>
+
     )
 }

@@ -5,8 +5,10 @@ const SearchForm = props => {
     return (
 
         <div className="jumbotron jumbotron-fluid d-flex align-items-center">
+
             <div className="container text-center">
                 <h1 id="title">Find Landmarks Anywhere in the World</h1>
+
             </div>
 
             <form>

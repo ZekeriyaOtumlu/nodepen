@@ -1,10 +1,12 @@
 
 import React, { Component } from "react";
 import "./App.css"
+
 import fire from "./config/fire"
 import Home from "./home"
 import Login from './login'
 class App extends Component {
+
   state = {
     user: {}
   }
@@ -22,10 +24,12 @@ class App extends Component {
       }
     });
   }
+
   render() {
     return (
       < div className='App'>
         {this.state.user ? (<Home />) : (<Login />)}
+
       </div>
     );
   }

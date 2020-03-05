@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Nav from './components/Nav'
 import fire from './config/fire'
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SaveVacations from "./pages/SaveVacations";
 import SearchVacations from "./pages/SearchVacations"
 import Footer from "./components/Footer"
 import NoMatch from "./pages/NoMatch";
+
 class Home extends Component {
     constructor(props) {
         super(props);
@@ -20,6 +22,7 @@ class Home extends Component {
     render() {
         return (
             <Router>
+
        
                 <div>
                     <Switch>
@@ -29,6 +32,7 @@ class Home extends Component {
                         <Route component={NoMatch} />
                     </Switch>
                     <Footer />
+
                 </div>
             </Router>
         )
