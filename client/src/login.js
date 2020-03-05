@@ -13,14 +13,12 @@ class Login extends Component {
          password: "",
          message: ''
       }
-      
    }
    login = (e) => {
       e.preventDefault();
       fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
       }).catch((error) => {
          console.log(error);
-         
       });
    }
    signUp(e) {
@@ -35,12 +33,10 @@ class Login extends Component {
       this.setState({ [e.target.name]: e.target.value });
    }
    render() {
-      
       return (
          <>
          {/* <div><Nav2 /></div> */}
          <div className='outerBox'>
-         
             <div className='beach'>
                <h1 className="myTitle">Landmark Search App</h1>
          </div>
@@ -62,10 +58,8 @@ class Login extends Component {
                btn-success'>SignUp</button>
             </form>
          </div>
-        
          </>
-         
       );
    }
 }
-export default Login
+export default Login;

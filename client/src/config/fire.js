@@ -11,10 +11,6 @@ const firebaseConfig = {
 };
   
   const fire = firebase.initializeApp(firebaseConfig);
-  
 
-
-  // const facebookProvider = new firebase.auth.FacebookAuthProvider();
-  // const googleProvider = new firebase.auth.GoogleAuthProvider();
 
   export default fire

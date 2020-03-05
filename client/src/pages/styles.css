@@ -1,34 +1,25 @@
 img {
 margin-left: 10px;
 margin-right: 20px;
-
 }
-
 row {
 border: black;
 }
-
 .fullResults {
 margin-left: 5px;
 }
 .center {
     display: flex;
 vertical-align: -webkit-baseline-middle
-
 }
 /* #forecast_embed {
-
 vertical-align: middle;
-
 } */
-
 .list-group-item {
     border-radius: 5px;
    margin-top: 5px;
    /* margin-bottom: 5px; */
-
 }
-
 .address {
 margin-top: 2px;
 padding-bottom: 12px;

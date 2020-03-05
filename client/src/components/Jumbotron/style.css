@@ -1,22 +1,19 @@
 .jumbotron{
     background-image: url("./Banner.jpg");
     background-position: center;
-    background-color: #7cc1de;
+    background-color: #7CC1DE;
     height: 318px;
     text-align: center;
-
 }
 #title {
 margin-top: 0px;
 font-family: 'Times New Roman', Times, serif;
 }
-
 form{
     border-radius: 35px;
     margin-top: 195px;
     
 }
-
 .submitBtn{
     margin-top: 5px;
     color: blue;
@@ -25,4 +22,3 @@ form{
     width: 250px;
     height: 20px;
 }
-

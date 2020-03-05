@@ -4,9 +4,7 @@ margin-top: -16px;
 background-image: url(./Intro_Image.gif);
 background-position: -15px;
 height: 45px;
-
 }
-
 .savedLandmarks {
 float: right;
 margin-right: 10px !important;
@@ -15,4 +13,3 @@ margin-top: 5px !important;
 /* display: none !important; */
 /* border-radius: 50%; */
 }
-
