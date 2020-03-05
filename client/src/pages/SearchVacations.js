@@ -21,7 +21,7 @@ class searchVacations extends Component {
         error: "",
         // message: "",
         lat: "25.7616798",
-        lng:  "-80.1917902",
+        lng: "-80.1917902",
         src: '',
         name: '',
         id: " ",
@@ -30,7 +30,7 @@ class searchVacations extends Component {
         link: "/saved"
 
     };
-    
+
 
     //function to take value of what enter in the search bar
     handleInputChange = event => {
@@ -52,13 +52,13 @@ class searchVacations extends Component {
                 else {
 
                     // console.log(res.data.results)
-                    this.setState({lat: res.data.results[0].geometry.location.lat})
+                    this.setState({ lat: res.data.results[0].geometry.location.lat })
                     // console.log(this.state.lat)
-                    this.setState({lng: res.data.results[0].geometry.location.lng})
+                    this.setState({ lng: res.data.results[0].geometry.location.lng })
                     // console.log(this.state.lng)
-                    this.setState({name: res.data.results[0].formatted_address})
+                    this.setState({ name: res.data.results[0].formatted_address })
 
-                    this.setState({src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us`})
+                    this.setState({ src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us` })
                     // console.log(this.state.src)
                     // store response in a array
                     // let results = res.data.items
@@ -82,46 +82,67 @@ class searchVacations extends Component {
             })
             .catch(err => this.setState({ error: err.items }));
 
-            API.placeSearch(this.state.search).then(res => {
-                console.log(res)
+        API.placeSearch(this.state.search).then(res => {
+            console.log(res)
 
-             let vacationContent = [];
-                
-  for (let i = 0; i < res.data.length && i < 7;  i++) {
+            let vacationContent = [];
 
-    vacationContent[i] = {
-    id: (res.data[i].id),
-    name: (res.data[i].name),
-    address: (res.data[i].formatted_address),
-    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
+            for (let i = 0; i < res.data.length && i < 7; i++) {
+
+                vacationContent[i] = {
+                    id: (res.data[i].id),
+                    name: (res.data[i].name),
+                    address: (res.data[i].formatted_address),
+                    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
+                }
+            }
+            this.setState({ vacationContent: vacationContent })
+            console.log(this.state.vacationContent)
+
+
+        });
+
+
+
+
     }
-   }
-    this.setState({vacationContent:vacationContent})
-    console.log(this.state.vacationContent)
 
+    handleSavedButton = ({id, name, address, image: weather}, src) => {
 
-            });
+        console.log(id)
+        console.log(name)
+        console.log(address)
+        console.log(weather)
+        console.log(src)
+        // console.log(res)
 
+        let saveInfo = {
+            id,
+            name,
+            address,
+            weather,
+            src
+        }
 
-       
+        console.log(saveInfo)
 
-    }
-
-    handleSavedButton = event => {
-        console.log(event)
-        event.preventDefault();
-        console.log(this.state.vacations)
-        let savedVacations = this.state.vacations.filter(vacation => vacation.id === event.res.id)
-        savedVacations = savedVacations[0];
-        API.saveVacation(savedVacations)
-            .then(this.setState(alert("Your Vacation is saved") ))
+        // console.log(event)
+        // event.preventDefault();
+        // console.log(this.state.vacations)
+        // let savedVacations = this.state.vacations.filter(vacation => vacation.id === event.res.id)
+        // savedVacations = savedVacations[0];
+        API.saveVacation(saveInfo)
+            .then(this.setState(alert("Your Vacation is saved")))
             .catch(err => console.log(err))
     }
     render() {
         return (
             <Container fluid>
+
        <Nav title={this.state.pagename} link={this.state.link}> </Nav>
 
+
+    
                 <Jumbotron
                 
                 handleFormSubmit={this.handleFormSubmit}
@@ -139,10 +160,15 @@ class searchVacations extends Component {
 
 
 
+                <SearchForm
+                    handleFormSubmit={this.handleFormSubmit}
+                    handleInputChange={this.handleInputChange}
+                />
+
                 <Container>
                     <Row>
                         <Col size="12">
-              
+
                         </Col>
                     </Row>
                 </Container>
@@ -151,47 +177,44 @@ class searchVacations extends Component {
                     <SearchResult vacations={this.state.vacations} handleSavedButton={this.handleSavedButton} />
                 </Container>
 
-
-
                 <List>
-                {this.state.vacationContent.map(res => {
-                  return (
-                    <ListItem key={res.id}>
-                        <div className="fullResults">
+                    {this.state.vacationContent.map(res => {
+                        return (
+                            <ListItem key={res.id}>
+                                <div className="fullResults">
 
-                            <div className="name">
-                             <h3>
-                                 {res.name}
-                             </h3>
-                            </div>
-                            <div className="center">
-                            <img id="placeImg" src={res.image}></img>
-                            <iframe id="forecast_embed" title={res.name} frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
-                            {/* <button className="saveVacation btn btn-primary" id={res.id}
+                                    <div className="name">
+                                        <h3>
+                                            {res.name}
+                                        </h3>
+                                    </div>
+                                    <div className="center">
+                                        <img id="placeImg" src={res.image}></img>
+                                        <iframe id="forecast_embed" title={res.name} frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
+                                        {/* <button className="saveVacation btn btn-primary" id={res.id}
                             //  onClick={(event) => props.handleSavedButton(event)}
                              >
 
                                 Save
 
                             </button> */}
-                            <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(event)}>
-                                Save
+                                        <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(res, this.state.src)}>
+                                            Save
                             </button>
-                            
-                            </div>
-                            <div className="address">
-                            {res.address}
-                            </div>
-                            <hr></hr>
-                        </div>
-                     
-                    </ListItem>
-                  );
-                })}
-              </List>
 
 
 
+                                    </div>
+                                    <div className="address">
+                                        {res.address}
+                                    </div>
+                                    <hr></hr>
+                                </div>
+
+                            </ListItem>
+                        );
+                    })}
+                </List>
 
             </Container>
         )

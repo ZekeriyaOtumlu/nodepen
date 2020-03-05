@@ -3,12 +3,12 @@
     background-color: lightgrey
 }
 
-.saved-list{
+.search-list{
     border-radius: 15px;
-    background-color: lightyellow
+    background-color: lightblue
 }
 
-.deleteVacation {
+.saveVacation {
     border-radius: 5px;
     margin-left: 10px
 }
@@ -16,4 +16,8 @@
 .viewBook {
     border-radius: 5px;
     margin-left: 5px
+}
+.fullResults {
+    margin-left: 2px !important;
+    padding-left: 5px;
 }

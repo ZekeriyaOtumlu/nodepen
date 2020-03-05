@@ -22,7 +22,7 @@ const SavedResult = props => {
                                 <Row className="SearchResult" id={savedVacations.name + "Card"} key={savedVacations._id}>
                                     {/* col-3 show image of the vacation */}
                                     <Col size="2" className="bookImage">
-                                        <img src={savedVacations.image} alt={savedVacations.name} />
+                                        <img src={savedVacations.weather} alt={savedVacations.name} />
                                     </Col>
                                     <Col size="1" className="emptyCol"/>
                                     {/* col-9 show information of the vacation */}
@@ -31,10 +31,7 @@ const SavedResult = props => {
                                             <h2 className="bookTitle">{savedVacations.name}</h2>
                                         </Row>
                                         <Row>
-                                            <h3 className="bookAuthor">{savedVacations.image}</h3>
-                                        </Row>
-                                        <Row>
-                                            <p className="bookDescription">{savedVacations.weather}</p>
+                                        <iframe id="forecast_embed" title={savedVacations.name} frameBorder="0" height="200px" width="60%" src={savedVacations.src}></iframe>
                                         </Row>
                                     </Col>
                                 </Row>
@@ -49,6 +46,25 @@ const SavedResult = props => {
                                         </button>
                                     </a>
                                 </Row>
+                                <div>
+                                {/* <form>
+                                <div className="form-group">
+                                <label className="VacationSearchLabel"></label>
+                                <br></br>
+                                <input className="col-12 form-control"
+                                value= 
+                                type="text"
+                                name=""
+                                onChange={props.handleInputChange}
+                                    />
+                                </div>
+            <button type="submit" className="submitBtn btn btn-primary" onClick={props.handleFormSubmit}>
+                Submit
+            </button>
+
+        </form> */}
+            <input type="checkbox" id="vehicle1" onChange={(event) => props.handleInputChange(event,savedVacations._id,savedVacations.visited )} checked={savedVacations.visited} name="vehicle1" value={savedVacations.visited}></input>
+                                </div>
                             </li>
                         );
                     })}
