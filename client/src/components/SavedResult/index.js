@@ -29,7 +29,7 @@ const SavedResult = (props) => {
 											<h3>{savedVacations.name}</h3>
 										</div>
 										<div className="center">
-											<img id="placemg" src={savedVacations.image} />
+											<img id="place" src={savedVacations.image} />
 											<iframe
 												id="forecast_embed"
 												title={savedVacations.name}
