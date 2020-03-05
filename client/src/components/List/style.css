@@ -1,9 +1,17 @@
 .list-overflow-container {
     /* max-height: 5600px; */
+
     /* border: 1px #DDDDDD solid; */
     /* border-radius: 4px; */
     /* overflow-y: scroll; */
     /* list-style-type: none !important; */
+
+    border: 1px #DDDDDD solid;
+    border-radius: 4px;
+    /* overflow-y: scroll; */
+    /* overflow-x: hidden; */
+    list-style-type: none !important;
+
   }
   .list-overflow-container ul {
     /* margin: 0; */
@@ -34,6 +42,7 @@ img {
     margin-top: 0em;
 }
 .fullResults {
+
   padding-left: 20px;
 
 }
@@ -51,6 +60,9 @@ li:nth-child(even){
 }
 .list-overflow-container {
 
+
+
+    margin-left: -20px !important;
 
 
 }
