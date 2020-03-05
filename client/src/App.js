@@ -49,6 +49,7 @@ class App extends Component {
   }
 
 
+
   render() {
 
     return (
@@ -56,6 +57,25 @@ class App extends Component {
       
       < div className='App'>
       { this.state.user ? (<Home />) : (<Login />) }
+
+  
+render() {
+  return (
+    
+    <Router>
+      <div>
+
+       
+       
+        <Switch>
+          <Route exact path="/saved" component={SaveVacations} />
+          <Route exact path="/" component={searchVacations} />
+          <Route exact path="/saved/:id" component={SaveVacations} />
+          <Route component={NoMatch} />
+        </Switch>
+      
+        <Footer />
+
       </div>
 
 

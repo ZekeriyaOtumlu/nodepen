@@ -6,6 +6,7 @@ import { Container, Row, Col } from "../components/Grid";
 import SearchResult from "../components/SearchResult"
 import './styles.css';
 import { List, ListItem } from "../components/List"
+import Nav from "../components/Nav"
 const APIKEY = "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY";
 const photoBaseURL = 'https://maps.googleapis.com/maps/api/place/photo?&maxwidth=360&photoreference=';
 
@@ -24,7 +25,9 @@ class searchVacations extends Component {
         src: '',
         name: '',
         id: " ",
-        image: " "
+        image: " ",
+        pagename: "saved Landmarks",
+        link: "/saved"
 
     };
 
@@ -162,6 +165,8 @@ class searchVacations extends Component {
         return (
             <Container fluid>
 
+       <Nav title={this.state.pagename} link={this.state.link}> </Nav>
+
 
                 <Jumbotron />
 
@@ -170,6 +175,10 @@ class searchVacations extends Component {
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
                 />
+
+
+
+    
 
                 <Jumbotron
                 
