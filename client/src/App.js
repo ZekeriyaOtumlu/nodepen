@@ -11,10 +11,19 @@ import SearchForm from './components/SearchForm'
 import  fire  from "./config/fire"
 import Home from "./home"
 import Info from './utils/API'
+
+import { SignIn, SignUp } from './login'
+
+
+
+class App extends Component {  
+
+
 import { SignIn, SignUp } from './login';
 import Login from './login';
 // import Weather from './components/Weather/weather'
 class App extends Component {
+
   state = {
     user: {}
   }
@@ -31,10 +40,30 @@ class App extends Component {
       }
     });
   }
+
+  
+render() {
+  return (
+    
+    <Router>
+      <div>
+
+       
+       
+        <Switch>
+          <Route exact path="/saved" component={SaveVacations} />
+          <Route exact path="/" component={searchVacations} />
+          <Route exact path="/saved/:id" component={SaveVacations} />
+          <Route component={NoMatch} />
+        </Switch>
+      
+        <Footer />
+    
   render() {
     return (
       < div className='App'>
         {this.state.user ? (<Home />) : (<Login />)}
+
       </div>
     );
   }

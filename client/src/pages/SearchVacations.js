@@ -1,8 +1,14 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
+import Icon from '@material-ui/core/Icon';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
 import { Container, Row, Col } from "../components/Grid";
+
+
 import SearchForm from "../components/SearchForm";
+
 import SearchResult from "../components/SearchResult"
 import './styles.css';
 import { List, ListItem } from "../components/List"
@@ -133,12 +139,13 @@ class searchVacations extends Component {
 
     }
 
-    handleSavedButton = ({id, name, address, image: weather}, src) => {
+    handleSavedButton = ({id, name, address, image}, src) => {
 
         console.log(id)
         console.log(name)
         console.log(address)
-        console.log(weather)
+        console.log(image)
+        // console.log(weather)
         console.log(src)
         // console.log(res)
 
@@ -146,7 +153,7 @@ class searchVacations extends Component {
             id,
             name,
             address,
-            weather,
+            image,
             src
         }
 
@@ -164,9 +171,13 @@ class searchVacations extends Component {
     render() {
         return (
             <Container fluid>
+       <Nav title={this.state.pagename} link={this.state.link}> </Nav>
 
        <Nav title={this.state.pagename} link={this.state.link}> </Nav>
 
+
+
+                {/* <Jumbotron /> */}
 
                 <Jumbotron />
 
@@ -179,6 +190,7 @@ class searchVacations extends Component {
 
 
     
+
 
                 <Jumbotron
                 
@@ -196,11 +208,11 @@ class searchVacations extends Component {
 
 
 
-
+{/* 
                 <SearchForm
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
-                />
+                /> */}
 
                 <Container>
                     <Row>
@@ -237,16 +249,28 @@ class searchVacations extends Component {
                                     <div className="center">
                                         <img id="placeImg" src={res.image}></img>
                                         <iframe id="forecast_embed" title={res.name} frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
-                                        {/* <button className="saveVacation btn btn-primary" id={res.id}
-                            //  onClick={(event) => props.handleSavedButton(event)}
-                             >
-
-                                Save
-
-                            </button> */}
-                                        <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(res, this.state.src)}>
+ 
+   {/* <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(res, this.state.src)}>
                                             Save
-                            </button>
+                            </button> */}
+
+
+
+                            <Button
+                            id={this.state.id}
+                            onClick={(event) => this.handleSavedButton(res, this.state.src)}
+        variant="contained"
+        color="primary"
+        size="large"
+        // className={classes.button}
+        startIcon={<SaveIcon />}
+      >
+        Save
+      </Button>
+
+
+
+
 
 
 
@@ -254,7 +278,7 @@ class searchVacations extends Component {
                                     <div className="address">
                                         {res.address}
                                     </div>
-                                    <hr></hr>
+                                
                                 </div>
 
                             </ListItem>

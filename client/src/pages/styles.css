@@ -21,3 +21,15 @@ vertical-align: -webkit-baseline-middle
 vertical-align: middle;
 
 } */
+
+.list-group-item {
+    border-radius: 5px;
+   margin-top: 5px;
+   /* margin-bottom: 5px; */
+
+}
+
+.address {
+margin-top: 2px;
+padding-bottom: 5px;
+}

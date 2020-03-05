@@ -1,0 +1,17 @@
+form{
+    /* background: lightblue; */
+    border-radius: 35px;
+    /* background-color: aquamarine; */
+    margin-top: 190px;
+}
+
+.submitBtn{
+    margin-top: 5px;
+    color: blue;
+    /* margin-left: 20px; */
+}
+.form-control{
+    /* margin-left: 20px; */
+    width: 250px;
+    height: 20px;
+}
