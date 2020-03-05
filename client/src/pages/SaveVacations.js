@@ -3,10 +3,14 @@ import API from "../utils/API";
 import Jumbotron from "../components/Jumbotron";
 import { Container} from "../components/Grid";
 import SavedResult from "../components/SavedResult"
+import './saveVacation.css';
+import Nav from "../components/Nav"
 
 class SaveVacation extends Component {
     state = {
-        savedVacations: []
+        savedVacations: [],
+        pagename: "Search Landmarks",
+        link: "/"
     };
 
     //when this component mounts, grab all vacations that were save to the database 
@@ -26,6 +30,7 @@ class SaveVacation extends Component {
     render() {
         return (
             <Container fluid className="container">
+                 <Nav title={this.state.pagename} link={this.state.link}> </Nav>
                 <Jumbotron />
                 <Container>
                     <SavedResult savedVacations={this.state.savedVacations} handleDeleteButton={this.handleDeleteButton} />
