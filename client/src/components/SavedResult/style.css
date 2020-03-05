@@ -1,11 +1,11 @@
 .card{
-    border-radius: 10px;
-    background-color: lightgrey
+    /* border-radius: 10px; */
+    /* background-color: lightgrey */
 }
 
 .search-list{
-    border-radius: 15px;
-    background-color: lightblue
+    /* border-radius: 15px; */
+    /* background-color: lightblue */
 }
 
 .saveVacation {
@@ -13,9 +13,9 @@
     margin-left: 10px
 }
 
-.viewBook {
+.list-group-item {
     border-radius: 5px;
-    margin-left: 5px
+    /* margin-left: 5px */
 }
 .fullResults {
     margin-left: 2px !important;

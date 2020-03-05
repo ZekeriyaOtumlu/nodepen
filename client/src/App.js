@@ -13,8 +13,6 @@ import Info from './utils/API'
 import { SignIn, SignUp } from './login'
 
 
-// import Weather from './components/Weather/weather'
-
 
 class App extends Component {  
 
