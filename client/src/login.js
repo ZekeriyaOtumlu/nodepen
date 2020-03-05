@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import fire from './config/fire';
-import Nav from './components/Nav'
 
-
+import Nav2 from './components/Navbar2'
+import "./index.css"
 
 class Login extends Component {
    constructor(props) {
@@ -25,8 +25,8 @@ class Login extends Component {
          console.log(error);
          
       });
-   }
 
+   }
    signUp(e) {
       e.preventDefault();
       fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
@@ -36,7 +36,6 @@ class Login extends Component {
          )
    }
 
-
    handleChange = (e) => {
       this.setState({ [e.target.name]: e.target.value });
    }
@@ -44,19 +43,26 @@ class Login extends Component {
    render() {
       
       return (
+
+         <>
+         {/* <div><Nav2 /></div> */}
          <div className='outerBox'>
-         <Nav />
-            <div  alt='beach'className='box' >
          
-            <form style={{width:'40%', marginLeft:'30%', backgroundColor:'lightblue'}}>
-               <div  class="form-group" >
+            <div className='beach'>
+               <h1 className="myTitle">Landmark Search App</h1>
+         </div>
+            <form id="logIn" style={{width:'40%', backgroundColor:'lightblue'}}>
+               <div  className="form-group2" >
+
                   <label for="exampleInputEmail1">Email address</label>
                   <input value={this.state.email} onChange={this.handleChange} type="email" name="email"
                      class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
                      placeholder="Enter Email" />
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                </div>
-               <div class="form-group">
+
+               <div className="form-group2">
+
                   <label for="exampleInputPassword1">Password</label>
                   <input value={this.state.password} onChange={this.handleChange} type="password"
                      name="password" class="form-control" id="exampleInputPassword1" placeholder="password" />
@@ -68,10 +74,13 @@ class Login extends Component {
             </form>
          </div>
 
-         </div>
+        
+         </>
+
          
       );
    }
 }
 
-export default Login;
+export default Login
+
