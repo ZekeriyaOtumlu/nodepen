@@ -51,6 +51,17 @@ class searchVacations extends Component {
                 }
                 else {
 
+
+                    console.log(res.data.results)
+                    this.setState({ lat: res.data.results[0].geometry.location.lat })
+                    console.log(this.state.lat)
+                    this.setState({ lng: res.data.results[0].geometry.location.lng })
+                    console.log(this.state.lng)
+                    this.setState({ name: res.data.results[0].formatted_address })
+
+                    this.setState({ src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us` })
+                    console.log(this.state.src)
+
                     // console.log(res.data.results)
                     this.setState({ lat: res.data.results[0].geometry.location.lat })
                     // console.log(this.state.lat)
@@ -60,6 +71,7 @@ class searchVacations extends Component {
 
                     this.setState({ src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us` })
                     // console.log(this.state.src)
+
                     // store response in a array
                     // let results = res.data.items
                     // //map through the array 
@@ -87,6 +99,19 @@ class searchVacations extends Component {
 
             let vacationContent = [];
 
+
+            for (let i = 0; i < res.data.length && i < 5; i++) {
+
+                vacationContent[i] = {
+                    name: (res.data[i].name),
+                    address: (res.data[i].formatted_address),
+                    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
+                }
+
+            }
+            console.log(vacationContent)
+
+
             for (let i = 0; i < res.data.length && i < 7; i++) {
 
                 vacationContent[i] = {
@@ -98,6 +123,7 @@ class searchVacations extends Component {
             }
             this.setState({ vacationContent: vacationContent })
             console.log(this.state.vacationContent)
+
 
 
         });
@@ -142,7 +168,18 @@ class searchVacations extends Component {
        <Nav title={this.state.pagename} link={this.state.link}> </Nav>
 
 
+                <Jumbotron />
+
+
+                <SearchForm
+                    handleFormSubmit={this.handleFormSubmit}
+                    handleInputChange={this.handleInputChange}
+                />
+
+
+
     
+
                 <Jumbotron
                 
                 handleFormSubmit={this.handleFormSubmit}
@@ -176,6 +213,15 @@ class searchVacations extends Component {
                 <Container>
                     <SearchResult vacations={this.state.vacations} handleSavedButton={this.handleSavedButton} />
                 </Container>
+
+
+                <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
+                <hr></hr>
+
+                {/* <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                                            Save Book
+                                        </button> */}
+
 
                 <List>
                     {this.state.vacationContent.map(res => {
@@ -215,6 +261,7 @@ class searchVacations extends Component {
                         );
                     })}
                 </List>
+
 
             </Container>
         )
