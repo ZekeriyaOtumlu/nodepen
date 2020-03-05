@@ -14,8 +14,6 @@ const firebaseConfig = {
   
 
 
-  const facebookProvider = new firebase.auth.FacebookAuthProvider();
-  const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-  export {fire, googleProvider, facebookProvider}
+  export default fire
 

@@ -19,12 +19,12 @@ class searchVacations extends Component {
         error: "",
         message: "",
         lat: "25.7616798",
-        lng:  "-80.1917902",
+        lng: "-80.1917902",
         src: '',
         name: ''
 
     };
-    
+
 
     //function to take value of what enter in the search bar
     handleInputChange = event => {
@@ -46,13 +46,13 @@ class searchVacations extends Component {
                 else {
 
                     console.log(res.data.results)
-                    this.setState({lat: res.data.results[0].geometry.location.lat})
+                    this.setState({ lat: res.data.results[0].geometry.location.lat })
                     console.log(this.state.lat)
-                    this.setState({lng: res.data.results[0].geometry.location.lng})
+                    this.setState({ lng: res.data.results[0].geometry.location.lng })
                     console.log(this.state.lng)
-                    this.setState({name: res.data.results[0].formatted_address})
+                    this.setState({ name: res.data.results[0].formatted_address })
 
-                    this.setState({src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us`})
+                    this.setState({ src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us` })
                     console.log(this.state.src)
                     // store response in a array
                     // let results = res.data.items
@@ -76,26 +76,26 @@ class searchVacations extends Component {
             })
             .catch(err => this.setState({ error: err.items }));
 
-            API.placeSearch(this.state.search).then(res => {
-                console.log(res)
+        API.placeSearch(this.state.search).then(res => {
+            console.log(res)
 
-             let vacationContent = [];
-                
-  for (let i = 0; i < res.data.length && i < 5;  i++) {
+            let vacationContent = [];
 
-    vacationContent[i] = {
-    name: (res.data[i].name),
-    address: (res.data[i].formatted_address),
-    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
-    }
+            for (let i = 0; i < res.data.length && i < 5; i++) {
 
-  }
-  console.log(vacationContent)
+                vacationContent[i] = {
+                    name: (res.data[i].name),
+                    address: (res.data[i].formatted_address),
+                    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
+                }
 
-            });
+            }
+            console.log(vacationContent)
+
+        });
 
 
-       
+
 
     }
 
@@ -112,14 +112,14 @@ class searchVacations extends Component {
     render() {
         return (
             <Container fluid>
-     
+
 
                 <Jumbotron />
-    
+
                 <SearchForm
-                                handleFormSubmit={this.handleFormSubmit}
-                                handleInputChange={this.handleInputChange}
-                            />
+                    handleFormSubmit={this.handleFormSubmit}
+                    handleInputChange={this.handleInputChange}
+                />
 
 
 
@@ -142,9 +142,13 @@ class searchVacations extends Component {
 
 
                 <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
-<hr></hr>
+                <hr></hr>
 
-         
+                {/* <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
+                                            Save Book
+                                        </button> */}
+
+
             </Container>
         )
     }

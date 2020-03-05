@@ -7,40 +7,14 @@ import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import SaveBooks from "./pages/SaveBooks";
-import { fire } from "./config/fire"
+import SaveVacations from "./pages/SaveVacations";
+import SearchResult from './components/SearchResult'
+import SearchForm from './components/SearchForm'
+import fire from "./config/fire"
+import Home from "./home"
+import Login from './login'
 import Info from './utils/API'
 import { SignIn, SignUp } from './login'
-
-
-// import Weather from './components/Weather/weather'
-
-
-class App extends Component {  
-
-  state = {
-    user: {}
-  }
-
-  componentDidMount = () => {
-    this.authListener();
-  }
-
-  authListener = () => {
-    fire.auth().onAuthStateChanged((user) => {
-
-      if (user) {
-        console.log(user)
-        this.setState({ user });
-      } else {
-        this.setState({ user: null });
-      }
-    });
-  }
-
-
-
-import SaveVacations from "./pages/SaveVacations";
 
 
 // import Weather from './components/Weather/weather'
@@ -50,6 +24,7 @@ class App extends Component {
 
   state = {
     user: {}
+
   }
 
   componentDidMount = () => {
@@ -64,55 +39,33 @@ class App extends Component {
         this.setState({ user });
       } else {
         this.setState({ user: null });
+        localStorage.removeItem('user');
       }
     });
   }
-  
-render() {
-  return (
-    <Router>
-      <div>
-
-        {/* <iframe id="forecast_embed" frameborder="0" height="245" width="100%" src="//forecast.io/embed/#lat=25.3583&lon=-85.0603&name=Miami&color=#00aaff&font=Georgia&units=us"></iframe> */}
-        <Switch>
-          <Route exact path="/saved" component={SaveVacations} />
-          <Route exact path="/" component={searchVacations} />
-          <Route exact path="/saved/:id" component={SaveVacations} />
-          <Route component={NoMatch} />
-        </Switch>
-        <Nav />
-        <Footer />
-      </div>
-    </Router>
-  );
-}
-}
-
-
-
 
   render() {
+
     return (
 
+      
+      < div className='App'>
+      { this.state.user ? (<Home />) : (<Login />) }
+      </div>
 
-      <Router>
-        <div>
-          {/* <SignIn/> */}
-          <Nav />
-          {/* <iframe id="forecast_embed" frameborder="0" height="245" width="100%" src="//forecast.io/embed/#lat=25.3583&lon=-85.0603&name=Miami&color=#00aaff&font=Georgia&units=us"></iframe> */}
-          <Switch>
-            <Route exact path="/" component={SearchBooks} />
-            <Route exact path="/saved" component={SaveBooks} />
-            <Route exact path="/saved/:id" component={SaveBooks} />
-            <Route component={NoMatch} />
 
-          </Switch>
 
-          <Footer />
-        </div>
-      </Router>
+      
+
+
+
     );
-
   }
 }
+
+
+
+
+
+
 export default App;
