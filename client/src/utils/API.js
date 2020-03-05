@@ -18,13 +18,17 @@ export default {
     // },
 
     // Gets the vacation with the given id
-    getVacation: function (id) {
-        return axios.get("/api/Vacation/" + id);
+    getVacation: function () {
+        return axios.get("/api/Vacation/");
     },
 
     // Saves a vacation to the database
     saveVacation: function (savedVacations) {
         return axios.post("/api/Vacation", savedVacations);
+    },
+
+    haveVisit: function(id, value) {
+        return axios.put("/api/Vacation/" + id, value);  
     },
 
     // Deletes the vacation with the given id
