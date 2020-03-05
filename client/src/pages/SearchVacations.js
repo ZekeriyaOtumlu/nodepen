@@ -141,7 +141,7 @@ class searchVacations extends Component {
        <Nav title={this.state.pagename} link={this.state.link}> </Nav>
 
 
-                <Jumbotron />
+                {/* <Jumbotron /> */}
                 <Jumbotron
                 
                 handleFormSubmit={this.handleFormSubmit}
@@ -158,11 +158,11 @@ class searchVacations extends Component {
 
 
 
-
+{/* 
                 <SearchForm
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
-                />
+                /> */}
 
                 <Container>
                     <Row>
