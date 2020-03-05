@@ -5,16 +5,12 @@ import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
 import { Container, Row, Col } from "../components/Grid";
-
 import SearchResult from "../components/SearchResult"
 import './styles.css';
 import { List, ListItem } from "../components/List"
 import Nav from "../components/Nav"
 const APIKEY = "&key=AIzaSyAE2CIuMnHiuUN7XLs9fRiATGN1gD-t0LY";
 const photoBaseURL = 'https://maps.googleapis.com/maps/api/place/photo?&maxwidth=360&photoreference=';
-
-
-
 class searchVacations extends Component {
     //create state
     state = {
@@ -30,55 +26,33 @@ class searchVacations extends Component {
         id: " ",
         image: " ",
         pagename: "saved Landmarks",
-
         link: "/saved",
         logout: "Log Off",
         logofffun: "fire.auth().signOut()"
-
-
     };
-
-
     //function to take value of what enter in the search bar
     handleInputChange = event => {
         this.setState({ search: event.target.value })
     }
-
     //function to control the submit button of the search form 
     handleFormSubmit = (event, query) => {
-
         // console.log("run")
         event.preventDefault();
         // once it clicks it connects to the google vacation api with the search value
         API.VacationSearch(this.state.search)
             .then(res => {
-
                 if (res.data.items === "error") {
                     throw new Error(res.data.items);
                 }
                 else {
-
-
-                    console.log(res.data.results)
-                    this.setState({ lat: res.data.results[0].geometry.location.lat })
-                    console.log(this.state.lat)
-                    this.setState({ lng: res.data.results[0].geometry.location.lng })
-                    console.log(this.state.lng)
-                    this.setState({ name: res.data.results[0].formatted_address })
-
-                    this.setState({ src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us` })
-                    console.log(this.state.src)
-
                     // console.log(res.data.results)
                     this.setState({ lat: res.data.results[0].geometry.location.lat })
                     // console.log(this.state.lat)
                     this.setState({ lng: res.data.results[0].geometry.location.lng })
                     // console.log(this.state.lng)
                     this.setState({ name: res.data.results[0].formatted_address })
-
                     this.setState({ src: `http://forecast.io/embed/#lat=${this.state.lat}&lon=${this.state.lng}&name=${this.state.name}&color=#00aaff&font=Georgia&units=us` })
                     // console.log(this.state.src)
-
                     // store response in a array
                     // let results = res.data.items
                     // //map through the array 
@@ -100,27 +74,10 @@ class searchVacations extends Component {
                 }
             })
             .catch(err => this.setState({ error: err.items }));
-
         API.placeSearch(this.state.search).then(res => {
             console.log(res)
-
             let vacationContent = [];
-
-
-            for (let i = 0; i < res.data.length && i < 5; i++) {
-
-                vacationContent[i] = {
-                    name: (res.data[i].name),
-                    address: (res.data[i].formatted_address),
-                    image: (photoBaseURL + res.data[i].photos[0].photo_reference + APIKEY)
-                }
-
-            }
-            console.log(vacationContent)
-
-
             for (let i = 0; i < res.data.length && i < 7; i++) {
-
                 vacationContent[i] = {
                     id: (res.data[i].id),
                     name: (res.data[i].name),
@@ -130,20 +87,9 @@ class searchVacations extends Component {
             }
             this.setState({ vacationContent: vacationContent })
             console.log(this.state.vacationContent)
-
-
-
         });
-
-
-
-
     }
-
-
     handleSavedButton = ({ id, name, address, image }, src) => {
-
-
         console.log(id)
         console.log(name)
         console.log(address)
@@ -151,7 +97,6 @@ class searchVacations extends Component {
         // console.log(weather)
         console.log(src)
         // console.log(res)
-
         let saveInfo = {
             id,
             name,
@@ -159,9 +104,7 @@ class searchVacations extends Component {
             image,
             src
         }
-
         console.log(saveInfo)
-
         // console.log(event)
         // event.preventDefault();
         // console.log(this.state.vacations)
@@ -174,40 +117,25 @@ class searchVacations extends Component {
     render() {
         return (
             <Container fluid>
-
                 <Nav title={this.state.pagename} link={this.state.link}> </Nav>
-
-
                 {/* <Jumbotron /> */}
-
                 <Jumbotron
-
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
-
-
-
                 />
                 {/*     
                 <SearchForm
                                 handleFormSubmit={this.handleFormSubmit}
                                 handleInputChange={this.handleInputChange}
                             /> */}
-
-
-
-
                 {/* 
-
                 <SearchForm
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
                 /> */}
-
                 <Container>
                     <Row>
                         <Col size="12">
-
                         </Col>
                     </Row>
                 </Container>
@@ -215,22 +143,11 @@ class searchVacations extends Component {
                 <Container>
                     <SearchResult vacations={this.state.vacations} handleSavedButton={this.handleSavedButton} />
                 </Container>
-
-
-                <iframe id="forecast_embed" title="1" frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
-                <hr></hr>
-
-                {/* <button className="saveBook btn btn-primary" id={book.id} onClick={(event) => props.handleSavedButton(event)}>
-                                            Save Book
-                                        </button> */}
-
-
                 <List>
                     {this.state.vacationContent.map(res => {
                         return (
                             <ListItem key={res.id}>
                                 <div className="fullResults">
-
                                     <div className="name">
                                         <h3>
                                             {res.name}
@@ -239,14 +156,9 @@ class searchVacations extends Component {
                                     <div className="center">
                                         <img id="placeImg" src={res.image}></img>
                                         <iframe id="forecast_embed" title={res.name} frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
-
-
                                         {/* <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(res, this.state.src)}>
                                             Save
                             </button> */}
-
-
-
                                         <Button
                                             id={this.state.id}
                                             onClick={(event) => this.handleSavedButton(res, this.state.src)}
@@ -258,32 +170,17 @@ class searchVacations extends Component {
                                         >
                                             Save
       </Button>
-
-
-
-
-
-
-
-
                                     </div>
                                     <div className="address">
                                         {res.address}
                                     </div>
-
                                 </div>
-
                             </ListItem>
                         );
                     })}
                 </List>
-
-
             </Container>
         )
     }
-
-
 }
-
 export default searchVacations;
