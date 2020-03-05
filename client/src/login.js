@@ -38,11 +38,12 @@ class Login extends Component {
       
       return (
          <>
-         <div><Nav2 /></div>
+         {/* <div><Nav2 /></div> */}
          <div className='outerBox'>
          
-            <div  alt='beach'className='box' >
-         
+            <div className='beach'>
+               <h1 className="myTitle">Landmark Search App</h1>
+         </div>
             <form id="logIn" style={{width:'40%', backgroundColor:'lightblue'}}>
                <div  className="form-group2" >
                   <label for="exampleInputEmail1">Email address</label>
@@ -61,7 +62,7 @@ class Login extends Component {
                btn-success'>SignUp</button>
             </form>
          </div>
-         </div>
+        
          </>
          
       );

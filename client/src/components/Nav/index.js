@@ -3,9 +3,9 @@ import "./style.css"
 import Button from '@material-ui/core/Button';
 import fire from "../../config/fire"
 
-// logout = () => {
-//     fire.auth().signOut();
-//   }
+function logout() {
+    fire.auth().signOut();
+  }
 
 
 
@@ -26,7 +26,7 @@ function Nav(props) {
                     </Button>
 
 
-                    <Button variant="contained" color="primary" onClick={props.logofffun} className="savedLandmarks">
+                    <Button variant="contained" color="primary" onClick={logout} className="savedLandmarks">
                        Log Out
                     </Button>
                 </ul>

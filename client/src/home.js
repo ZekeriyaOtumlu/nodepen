@@ -20,7 +20,7 @@ class Home extends Component {
     render() {
         return (
             <Router>
-                {/* <Nav /> */}
+       
                 <div>
                     <Switch>
                         <Route exact path="/saved" component={SaveVacations} />
