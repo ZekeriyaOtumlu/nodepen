@@ -1,219 +1,70 @@
-import React, { Component } from 'react';
-import { fire, facebookProvider, googleProvider } from './config/fire';
-import 'firebase/app';
-// import './login.css'
-export class SignIn extends Component {
-   state = {
-      user: {},
-      email: '',
-      password: '',
-      message: '',
+import React, { Component } from 'react'
+import fire from './config/fire';
+import Nav2 from './components/Navbar2'
+import "./index.css"
+class Login extends Component {
+   constructor(props) {
+      super(props);
+      this.login = this.login.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this.signUp = this.signUp.bind(this);
+      this.state = {
+         email: "",
+         password: "",
+         message: ''
+      }
+      
    }
-
-   componentDidMount = () => this.authListener();
-   closeModalHandler = () => this.props.history.push('/');
-   createAccountRedirect = () => this.props.history.push("/SignUp");
-   signInAccountRedirect = () => this.props.history.push("/SignIn");
-   authListener = () => {
-      fire.auth().onAuthStateChanged((user) => {
-         if (user) {
-            this.setState({ user });
-         } else {
-            this.setState({ user: null });
-            localStorage.removeItem('user');
-         }
+   login = (e) => {
+      e.preventDefault();
+      fire.auth().signInWithEmailAndPassword(this.state.email, this.state.password).then((u) => {
+      }).catch((error) => {
+         console.log(error);
+         
       });
    }
-   handleChange = (event) => {
-      const { name, value } = event.target;
-      this.setState({ [name]: value });
-   }
-   // Sign In/Up with Facebook
-   authWithFacebook = () => {
-      fire.auth().signInWithPopup(facebookProvider)
-         .then((result) => {
-            this.props.history.push('/');
-         })
-         .catch(err => alert(err));
-   }
-   // Sign In/Up with Google
-   authWithGoogle = () => {
-      fire.auth().signInWithPopup(googleProvider)
-         .then((result) => {
-            this.props.history.push('/');
-         })
-         .catch(err => alert(err));
-   }
-   loginBtn = () => {
-      const email = this.state.email;
-      const password = this.state.password;
-      fire.auth().signInWithEmailAndPassword(email, password)
-         .then(user => {
-            console.log(user);
-            this.props.history.push('/');
-         })
-         .catch(err => {
-            console.log(err);
-            this.setState({ message: "*Incorrect Password or Email" });
-         });
-   }
-   render() {
-      return (
-         <div id="login-box">
-            <div className="left-box">
-               <h1 id="signUp">Sign In</h1>
-               {/* <form> */}
-               <input
-                  value={this.email}
-                  onChange={this.handleChange}
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="signInEmailInput" />
-               <input
-                  value={this.password}
-                  onChange={this.handleChange}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="signInPasswordInput" />
-               <button
-                  onClick={() => this.loginBtn()}
-                  type="submit"
-                  className="signInBtn">
-                  Enter
-               </button>
-               <br></br>
-               
-               <button
-                  onClick={() => this.createAccountRedirect()}
-                  type="submit"
-                  className="">
-                  Create An Account
-               </button>
-               {/* </form> */}
-               <p style={{ color: "red" }}>{this.message}</p>
-            </div>
-            <div className="signInBackground">
-               <div className="exit-btn">
-                  <button
-                     onClick={() => this.closeModalHandler()}
-                     id="exit">
-                     X
-                  </button>
-               </div>
-               <div className="right-box">
-                  <span className="signInWith">Sign in with <br /> Social Network</span>
-                  <button className="social facebook" onClick={() => this.authWithFacebook()}>Log in with Facebook</button>
-                  <button className="social google" onClick={() => this.authWithGoogle()}>Log in with Google</button>
-               </div>
-            </div>
-         </div>
-      )
-   }
-}
-export class SignUp extends Component {
-   state = {
-      user: {},
-      email: '',
-      password: '',
-      message: '',
-   }
-   componentDidMount = () => this.authListener();
-   closeModalHandler = () => this.props.history.push('/');
-   signInAccountRedirect = () => this.props.history.push("/SignIn");
-   authListener = () => {
-      fire.auth().onAuthStateChanged((user) => {
-         if (user) {
-            this.setState({ user });
-         } else {
-            this.setState({ user: null });
-            localStorage.removeItem('user');
+   signUp(e) {
+      e.preventDefault();
+      fire.auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
+         .catch((error) => {
+            console.log(error);
          }
-      });
+         )
    }
-   handleChange = (event) => {
-      const { name, value } = event.target;
-      this.setState({ [name]: value });
-   }
-   // Sign In/Up with Facebook
-   authWithFacebook = () => {
-      fire.auth().signInWithPopup(facebookProvider)
-         .then((result) => {
-            this.props.history.push('/');
-         })
-         .catch(err => alert(err));
-   }
-   // Sign In/Up with Google
-   authWithGoogle = () => {
-      fire.auth().signInWithPopup(googleProvider)
-         .then((result) => {
-            this.props.history.push('/');
-         })
-         .catch(err => alert(err));
-   }
-   signUp = () => {
-      const email = this.state.email;
-      const password = this.state.password;
-      fire.auth().createUserWithEmailAndPassword(email, password)
-         .then(user => {
-            console.log(user);
-            this.props.history.push('/');
-         })
-         .catch(err => {
-            console.log(err);
-            this.setState({ message: "*The email address is already in use by another account. Please try another one." });
-         });
+   handleChange = (e) => {
+      this.setState({ [e.target.name]: e.target.value });
    }
    render() {
+      
       return (
-         <div id="login-box">
-            <div className="left-box">
-               <h1 id="signUp">Create Account</h1>
-               <input
-                  value={this.email}
-                  onChange={this.handleChange}
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                  className="signUpEmailInput" />
-               <input
-                  value={this.password}
-                  onChange={this.handleChange}
-                  type="password"
-                  name="password"
-                  placeholder="Password"
-                  className="signUpPasswordInput" />
-               <button
-                  onClick={() => this.signUp()}
-                  type="submit"
-                  className="signUpBtn">
-                  Submit
-               </button>
-               <br></br>
-               <button
-                  onClick={() => this.signInAccountRedirect()}
-                  type="submit"
-                  className="">
-                  Sign In
-               </button>
-               <p style={{ color: "red" }}>{this.message}</p>
-            </div>
-            <div className="signUpBackground">
-               <div className="exit-btn">
-                  <button
-                     onClick={() => this.closeModalHandler()}
-                     id="exit">
-                     X
-                  </button>
+         <>
+         <div><Nav2 /></div>
+         <div className='outerBox'>
+         
+            <div  alt='beach'className='box' >
+         
+            <form id="logIn" style={{width:'40%', backgroundColor:'lightblue'}}>
+               <div  className="form-group2" >
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input value={this.state.email} onChange={this.handleChange} type="email" name="email"
+                     class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                     placeholder="Enter Email" />
+                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                </div>
-               <div className="right-box">
-                  <span className="signInWith">Sign up with <br /> Social Network</span>
-                  <button className="social facebook" onClick={() => this.authWithFacebook()}>Sign up with Facebook</button>
-                  <button className="social google" onClick={() => this.authWithGoogle()}>Sign up with Google</button>
+               <div className="form-group2">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input value={this.state.password} onChange={this.handleChange} type="password"
+                     name="password" class="form-control" id="exampleInputPassword1" placeholder="password" />
                </div>
-            </div>
+               <button type="submit" onClick={this.login} class="btn btn-primary">Log in</button>
+               <button onClick={this.signUp} style={{marginLeft: '25px'}} className='btn
+               btn-success'>SignUp</button>
+            </form>
          </div>
-      )
+         </div>
+         </>
+         
+      );
    }
 }
+export default Login

@@ -29,7 +29,9 @@ class searchVacations extends Component {
         id: " ",
         image: " ",
         pagename: "saved Landmarks",
-        link: "/saved"
+        link: "/saved",
+        logout: "Log Off",
+        logofffun: "fire.auth().signOut()"
 
     };
 
@@ -109,7 +111,7 @@ class searchVacations extends Component {
 
     }
 
-    handleSavedButton = ({id, name, address, image}, src) => {
+    handleSavedButton = ({ id, name, address, image }, src) => {
 
         console.log(id)
         console.log(name)
@@ -135,25 +137,25 @@ class searchVacations extends Component {
         // let savedVacations = this.state.vacations.filter(vacation => vacation.id === event.res.id)
         // savedVacations = savedVacations[0];
         API.saveVacation(saveInfo)
-            .then(this.setState(alert("Your Vacation is saved")))
+            .then(this.setState(alert("Your Landmark is saved")))
             .catch(err => console.log(err))
     }
     render() {
         return (
             <Container fluid>
-       <Nav title={this.state.pagename} link={this.state.link}> </Nav>
+                <Nav title={this.state.pagename} link={this.state.link}> </Nav>
 
 
                 {/* <Jumbotron /> */}
                 <Jumbotron
-                
-                handleFormSubmit={this.handleFormSubmit}
-                handleInputChange={this.handleInputChange}
-                
-                
-                
+
+                    handleFormSubmit={this.handleFormSubmit}
+                    handleInputChange={this.handleInputChange}
+
+
+
                 />
-{/*     
+                {/*     
                 <SearchForm
                                 handleFormSubmit={this.handleFormSubmit}
                                 handleInputChange={this.handleInputChange}
@@ -161,7 +163,7 @@ class searchVacations extends Component {
 
 
 
-{/* 
+                {/* 
                 <SearchForm
                     handleFormSubmit={this.handleFormSubmit}
                     handleInputChange={this.handleInputChange}
@@ -193,23 +195,23 @@ class searchVacations extends Component {
                                     <div className="center">
                                         <img id="placeImg" src={res.image}></img>
                                         <iframe id="forecast_embed" title={res.name} frameBorder="0" height="200px" width="60%" src={this.state.src}></iframe>
- 
-   {/* <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(res, this.state.src)}>
+
+                                        {/* <button className="saveVacation btn btn-primary" id={this.state.id} onClick={(event) => this.handleSavedButton(res, this.state.src)}>
                                             Save
                             </button> */}
 
 
 
-                            <Button
-                            id={this.state.id}
-                            onClick={(event) => this.handleSavedButton(res, this.state.src)}
-        variant="contained"
-        color="primary"
-        size="large"
-        // className={classes.button}
-        startIcon={<SaveIcon />}
-      >
-        Save
+                                        <Button
+                                            id={this.state.id}
+                                            onClick={(event) => this.handleSavedButton(res, this.state.src)}
+                                            variant="contained"
+                                            color="primary"
+                                            size="large"
+                                            // className={classes.button}
+                                            startIcon={<SaveIcon />}
+                                        >
+                                            Save
       </Button>
 
 
@@ -222,7 +224,7 @@ class searchVacations extends Component {
                                     <div className="address">
                                         {res.address}
                                     </div>
-                                
+
                                 </div>
 
                             </ListItem>

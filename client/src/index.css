@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* #logIn {
+  align-content: ;
+  opacity: 0.8;
+  bottom: 20%;
+  padding-bottom: 10px;
+  margin-left: 30%;
+  width: 50%;
+} */
+
+.form-group2 {
+
+  margin: 0 auto;
+  width: 50%;
+  padding-bottom: 10px;
+}
+
+
+
+
+.box {
+  background-image: url(./login_image.jpg);
+  background-position: center;
+  background-color: #7cc1de;
+  height: 1000px;
+  text-align: center;
+  background-repeat: no-repeat;
+  margin-top: -190px;
+  z-index: -3;
+}
+
+#logIn {
+position: fixed;
+margin-top: 180px;
+}
